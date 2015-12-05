@@ -42,7 +42,9 @@
       <form class="form-register" >
         <h2 class="form-register-heading">Register here!</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" name="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
+        <label for="inputName" class="sr-only">Email address</label>
+        <input type="text" name="inputName" class="form-control" placeholder="Name">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
         <label for="inputPasswordComfirm" class="sr-only">Confirm Password</label>
