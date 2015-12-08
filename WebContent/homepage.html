@@ -67,7 +67,7 @@
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
+              <h4>Name</h4>
               <span class="text-muted">Something else</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -116,15 +116,41 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "friendpage">
           <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item" style="cursor:pointer;">friend 1</li>
+            <li class="list-group-item" style="cursor:pointer;">friend 2</li>
+            <li class="list-group-item" style="cursor:pointer;">friend 3</li>
+            <li class="list-group-item" style="cursor:pointer;">friend 4</li>
+            <li class="list-group-item" style="cursor:pointer;">Vestibulum at eros</li>
+            <li class="list-group-item" style="cursor:pointer;">Cras justo odio</li>
+            <li class="list-group-item" style="cursor:pointer;">Dapibus ac facilisis in</li>
+            <li class="list-group-item" style="cursor:pointer;">Morbi leo risus</li>
+            <li class="list-group-item" style="cursor:pointer;">Porta ac consectetur ac</li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "wishpage">
+          <ul class="list-group">
+            <li class="list-group-item" style="cursor:pointer;">wish 1</li>
+            <li class="list-group-item" style="cursor:pointer;">wish 2</li>
+            <li class="list-group-item" style="cursor:pointer;">wish 3</li>
+            <li class="list-group-item" style="cursor:pointer;">wish 4</li>
+            <li class="list-group-item" style="cursor:pointer;">wish 5</li>
+            <li class="list-group-item" style="cursor:pointer;">Cras justo odio</li>
+            <li class="list-group-item" style="cursor:pointer;">Dapibus ac facilisis in</li>
+            <li class="list-group-item" style="cursor:pointer;">Morbi leo risus</li>
+            <li class="list-group-item" style="cursor:pointer;">Porta ac consectetur ac</li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "supportpage">
+          <ul class="list-group">
+            <li class="list-group-item" style="cursor:pointer;">support 1</li>
+            <li class="list-group-item" style="cursor:pointer;">support 2</li>
+            <li class="list-group-item" style="cursor:pointer;">support 3</li>
+            <li class="list-group-item" style="cursor:pointer;">support 4</li>
+            <li class="list-group-item" style="cursor:pointer;">Vestibulum at eros</li>
+            <li class="list-group-item" style="cursor:pointer;">Cras justo odio</li>
+            <li class="list-group-item" style="cursor:pointer;">Dapibus ac facilisis in</li>
+            <li class="list-group-item" style="cursor:pointer;">Morbi leo risus</li>
+            <li class="list-group-item" style="cursor:pointer;">Porta ac consectetur ac</li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "searchpage">
@@ -139,11 +165,11 @@
             </form>
             <br>
             <ul class="list-group">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li class="list-group-item" style="cursor:pointer;">Cras justo odio</li>
+              <li class="list-group-item" style="cursor:pointer;">Dapibus ac facilisis in</li>
+              <li class="list-group-item" style="cursor:pointer;">Morbi leo risus</li>
+              <li class="list-group-item" style="cursor:pointer;">Porta ac consectetur ac</li>
+              <li class="list-group-item" style="cursor:pointer;">Vestibulum at eros</li>
             </ul>
           </div><!-- /.col-lg-6 -->
         </div>
@@ -161,12 +187,12 @@
 
   $( "#clickmywish" ).click(function() {
     activeitem("#clickmywish");
-
+    showitem('#wishpage');
   });
 
   $( "#clickmysupport" ).click(function() {
     activeitem("#clickmysupport");
-
+    showitem('#supportpage');
   });
 
   $( "#clickfriends" ).click(function() {
@@ -197,7 +223,7 @@
   }
 
   function showitem(itemid) {
-    var ids = ["#homepage", "#friendpage", "#searchpage"];
+    var ids = ["#homepage", "#friendpage", "#searchpage", "#wishpage", "#supportpage"];
     for (var i = 0; i < ids.length; i++) {
       if(itemid == ids[i]) {
         $(itemid).show();
