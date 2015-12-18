@@ -85,7 +85,7 @@
 			if (resultset.next()==true)
 			{
 				Cookie usernameCookie =new Cookie("username",resultset.getString(1));
-				if (Integer.parseInt(request.getParameter("remember-me"))==1)
+				if (request.getParameter("remember-me").equals("remember-me"))
 				{
 					usernameCookie.setMaxAge(-1);
 				}

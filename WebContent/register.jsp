@@ -84,7 +84,7 @@
 				}
 		 		else
 		 		{
-			 		statement.executeUpdate("INSERT INTO user (username,password) VALUES ('"+inputEmail+"','"+inputPassword+"')");
+			 		statement.executeUpdate("INSERT INTO User (username,password,name) VALUES ('"+inputEmail+"','"+inputPassword+"','"+request.getParameter("inputName")+"')");
 			 		%>
 					<script>alert('Registration succeed!');</script>
 					<%
