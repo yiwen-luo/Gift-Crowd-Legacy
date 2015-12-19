@@ -117,7 +117,7 @@
           </div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "friendpage">
-          <ul class="list-group">
+          <ul class="list-group" id="friend_list">
             <li class="list-group-item" style="cursor:pointer;">friend 1</li>
             <li class="list-group-item" style="cursor:pointer;">friend 2</li>
             <li class="list-group-item" style="cursor:pointer;">friend 3</li>
@@ -180,14 +180,6 @@
   </body>
   
   
-  
-  
-  
-  
-  
-  
-  
-  
   <script type="text/javascript">
 
   showitem('#homepage');
@@ -200,6 +192,15 @@
   $( "#clickmywish" ).click(function() {
     activeitem("#clickmywish");
     showitem('#wishpage');
+    $("#friend_list").html("");
+    var wishstr = <%=json%>;
+    var wishes = JSON.parse(wishstr);
+    for(var i = 0; i < wishes.length; i++)
+    {
+    	$("#respart").append(
+    		"<li class='list-group-item' style='cursor:pointer;'>" + wishes[i] + "</li>"
+    	);
+    }
   });
 
   $( "#clickmysupport" ).click(function() {
@@ -210,6 +211,7 @@
   $( "#clickfriends" ).click(function() {
     activeitem("#clickfriends");
     showitem('#friendpage');
+    
   });
 
   $( "#clicksearch" ).click(function() {
