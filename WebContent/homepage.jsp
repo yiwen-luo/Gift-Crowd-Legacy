@@ -235,16 +235,6 @@
   $( "#clickmywish" ).click(function() {
     activeitem("#clickmywish");
     showitem('#wishpage');
-    $("#friend_list").html("");
-    var wishstr = <%=friendArrayjson%>;
-    var wishes = JSON.parse(wishstr);
-    for(var i = 0; i < wishes.length; i++)
-    {
-    	$("#respart").append(
-    		"<li class='list-group-item' style='cursor:pointer;'>" + wishes[i] + "</li>"
-    	);
-    }
-	console.log(wishes);
   });
 
   $( "#clickmysupport" ).click(function() {
@@ -255,7 +245,15 @@
   $( "#clickfriends" ).click(function() {
     activeitem("#clickfriends");
     showitem('#friendpage');
-    
+    $("#friend_list").html("");
+    var friends = <%=friendArrayjson%>;
+    for(var i = 0; i < friends.length; i++)
+    {
+    	$("#respart").append(
+    		"<li class='list-group-item' style='cursor:pointer;'>" + friends[i] + "</li>"
+    	);
+    }
+	console.log(friends);
   });
 
   $( "#clicksearch" ).click(function() {
