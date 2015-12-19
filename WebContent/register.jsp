@@ -43,7 +43,7 @@
         <h2 class="form-register-heading">Register here!</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-        <label for="inputName" class="sr-only">Email address</label>
+        <label for="inputName" class="sr-only">Name</label>
         <input type="text" name="inputName" class="form-control" placeholder="Name">
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
@@ -60,6 +60,7 @@
 		
 		String inputEmail=null;
 		String inputPassword=null;
+        String inputName=null;
 		
 		if (request.getParameter("inputEmail")!=null)
 		{
@@ -67,6 +68,7 @@
 			{
 				inputEmail=request.getParameter("inputEmail");
 				inputPassword=request.getParameter("inputPassword");
+				inputName=request.getParameter("inputName");
 				
 				ResultSet resultset=null;
 		        String RdsUrl="jdbc:mysql://cs6998.cxjfpz461m3o.us-east-1.rds.amazonaws.com:3306/CS6998_project";
@@ -74,17 +76,17 @@
 		        String RdsPassword="columbia";	
 				Connection connection = DriverManager.getConnection(RdsUrl, RdsUsername, RdsPassword); 
 				Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-				ResultSet tempSet=statement.executeQuery("SELECT * FROM User WHERE username='"+inputEmail+"'");
+				ResultSet tempSet=statement.executeQuery("SELECT * FROM User WHERE username='"+inputEmail+"' OR name='"+inputName+"'");
 				
 		 		if (tempSet.next()==true)
 				{
 					%>
-					<script>alert("Email already existed!");</script>
+					<script>alert("Email or name already existed!");</script>
 					<%
 				}
 		 		else
 		 		{
-			 		statement.executeUpdate("INSERT INTO User (username,password,name) VALUES ('"+inputEmail+"','"+inputPassword+"','"+request.getParameter("inputName")+"')");
+			 		statement.executeUpdate("INSERT INTO User (username,password,name) VALUES ('"+inputEmail+"','"+inputPassword+"','"+inputName+"')");
 			 		%>
 					<script>alert('Registration succeed!');</script>
 					<%

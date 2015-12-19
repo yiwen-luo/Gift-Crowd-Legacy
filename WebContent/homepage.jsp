@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import="javax.servlet.http.Cookie" %>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
+<%-- <%@ page import="org.json.simple.JSONObject"%> --%>
+<%@ page import="org.json.simple.JSONArray"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -179,6 +184,43 @@
     </div>
   </body>
   
+ 
+ <% 
+ 	String username=null;
+	Cookie allCookie[]=request.getCookies();
+	for(int n=0;n<allCookie.length;n++)
+	{
+		if (allCookie[n].getName().equals("username"))
+	 	{ 
+	 		username=allCookie[n].getValue();
+	 	}
+	 			
+	}
+	if (username.equals(null))
+	{ 
+		%>
+		<script>
+		window.location.href='index.jsp';
+		</script>
+		<%
+	}
+	 
+ 
+ 	ResultSet resultset=null;
+ 	String RdsUrl="jdbc:mysql://cs6998.cxjfpz461m3o.us-east-1.rds.amazonaws.com:3306/CS6998_project";
+ 	String RdsUsername="cs6998";
+ 	String RdsPassword="columbia";	
+	Connection connection = DriverManager.getConnection(RdsUrl, RdsUsername, RdsPassword); 
+	Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+	ResultSet friendSet=statement.executeQuery("SELECT friendUsername FROM Friends WHERE username='"+username+"' AND confirmation='1'");
+	
+	JSONArray friendArray=new JSONArray();  	
+	while (friendSet.next()==true)
+	{
+		friendArray.add(friendSet.getString(2));
+	}
+ 
+ %>
   
   <script type="text/javascript">
 
@@ -193,7 +235,7 @@
     activeitem("#clickmywish");
     showitem('#wishpage');
     $("#friend_list").html("");
-    var wishstr = <%=json%>;
+    var wishstr = <%=friendArray%>;
     var wishes = JSON.parse(wishstr);
     for(var i = 0; i < wishes.length; i++)
     {
