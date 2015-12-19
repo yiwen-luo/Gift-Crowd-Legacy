@@ -33,7 +33,7 @@
 
     <div class="container">
 
-      <form class="form-login">
+      <form class="form-login" method="post">
         <h2 class="form-login-heading">Please login</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
@@ -85,7 +85,7 @@
 			if (resultset.next()==true)
 			{
 				Cookie usernameCookie =new Cookie("username",resultset.getString(1));
-				if (request.getParameter("remember-me").equals("remember-me"))
+				if (request.getParameter("remember-me")==null)
 				{
 					usernameCookie.setMaxAge(-1);
 				}

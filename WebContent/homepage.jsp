@@ -216,8 +216,10 @@
 	JSONArray friendArray = new JSONArray();  	
 	while (friendSet.next()==true)
 	{
-		friendArray.add(friendSet.getString(2));
+		friendArray.add(friendSet.getString(1));
 	}
+	friendArray.add("1");
+	friendArray.add("2");
 	String friendArrayjson = friendArray.toString();
  
  %>
