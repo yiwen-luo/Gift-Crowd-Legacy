@@ -204,8 +204,7 @@
 		</script>
 		<%
 	}
-	 
- 
+	
  	ResultSet resultset=null;
  	String RdsUrl="jdbc:mysql://cs6998.cxjfpz461m3o.us-east-1.rds.amazonaws.com:3306/CS6998_project";
  	String RdsUsername="cs6998";
@@ -214,14 +213,14 @@
 	Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	ResultSet friendSet=statement.executeQuery("SELECT friendUsername FROM Friends WHERE username='"+username+"' AND confirmation='1'");
 	
-	JSONArray friendArray=new JSONArray();  	
+	JSONArray friendArray = new JSONArray();  	
 	while (friendSet.next()==true)
 	{
 		friendArray.add(friendSet.getString(2));
 	}
+	String friendArrayjson = friendArray.toString();
  
  %>
-  
   <script type="text/javascript">
 
   showitem('#homepage');
@@ -235,7 +234,7 @@
     activeitem("#clickmywish");
     showitem('#wishpage');
     $("#friend_list").html("");
-    var wishstr = <%=friendArray%>;
+    var wishstr = <%=friendArrayjson%>;
     var wishes = JSON.parse(wishstr);
     for(var i = 0; i < wishes.length; i++)
     {
@@ -243,6 +242,7 @@
     		"<li class='list-group-item' style='cursor:pointer;'>" + wishes[i] + "</li>"
     	);
     }
+	console.log(wishes);
   });
 
   $( "#clickmysupport" ).click(function() {
