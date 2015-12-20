@@ -249,7 +249,7 @@
     var friends = <%=friendArrayjson%>;
     for(var i = 0; i < friends.length; i++)
     {
-    	$("#respart").append(
+    	$("#friend_list").append(
     		"<li class='list-group-item' style='cursor:pointer;'>" + friends[i] + "</li>"
     	);
     }
