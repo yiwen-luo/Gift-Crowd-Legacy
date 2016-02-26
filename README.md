@@ -1,5 +1,5 @@
 ###Updated
-The project is re-written in Python, which can be found in [this repository] (https://github.com/caoy11/GiftCrowd).
+The project is re-written in Python, which can be found in [this repository] (https://github.com/yiwen-luo/GiftCrowd).
 
 ###Legacy
 
